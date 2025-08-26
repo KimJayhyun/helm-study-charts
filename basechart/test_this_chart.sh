@@ -1,0 +1,1 @@
+helm install basechart . --dry-run
