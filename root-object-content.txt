@@ -1,0 +1,92 @@
+Root Object:
+  Capabilities: 0x14000730000
+  
+  Chart:
+    basechart:
+      name: basechart
+      version: 0.1.0
+      description: "A Helm chart for Kubernetes"
+      apiVersion: v2
+      kubeVersion: 1.16.0
+      deprecated: false
+      type: application
+      
+  Files:
+    .helmignore: [byte array content]
+    
+  Release:
+    IsInstall: true
+    IsUpgrade: false
+    Name: mychart
+    Namespace: ingress-apisix
+    Revision: 1
+    Service: Helm
+    
+  Subcharts: {}
+  
+  Template:
+    BasePath: basechart/templates
+    Name: basechart/templates/NOTES.txt
+    
+  Values:
+    affinity: {}
+    
+    autoscaling:
+      enabled: false
+      maxReplicas: 100
+      minReplicas: 1
+      targetCPUUtilizationPercentage: 80
+      
+    fullnameOverride: ""
+    
+    image:
+      pullPolicy: IfNotPresent
+      repository: nginx
+      tag: ""
+      
+    imagePullSecrets: []
+    
+    ingress:
+      annotations: {}
+      className: ""
+      enabled: false
+      hosts:
+        - host: chart-example.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
+      
+    livenessProbe:
+      httpGet:
+        path: /
+        port: http
+        
+    nameOverride: ""
+    nodeSelector: {}
+    podAnnotations: {}
+    podLabels: {}
+    podSecurityContext: {}
+    
+    readinessProbe:
+      httpGet:
+        path: /
+        port: http
+        
+    replicaCount: 1
+    resources: {}
+    securityContext: {}
+    
+    service:
+      port: 80
+      type: ClusterIP
+      
+    serviceAccount:
+      annotations: {}
+      automount: true
+      create: true
+      name: ""
+      
+    tolerations: []
+    volumeMounts: []
+    volumes: []
